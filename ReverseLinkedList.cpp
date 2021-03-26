@@ -1,8 +1,8 @@
 //takes linkedlist head and reverses the linkedlist recursively.
 
-void reversePrint(SinglyLinkedListNode* head) {
-    if(head == nullptr)
-        return;
+SinglyLinkedListNode* reverse(SinglyLinkedListNode* head) {
+     if(head == nullptr)
+        return head;
     //if(head->next == nullptr)
     //    return;
     static SinglyLinkedListNode* prevnode = nullptr;
@@ -14,19 +14,14 @@ void reversePrint(SinglyLinkedListNode* head) {
     
     if(nextnode==nullptr)
     {
-        while(head != nullptr)
-        {
-            cout<<head->data<<endl;
-            head = head->next;  
-        }
-        return;
+        return head;
     }
     
     prevnode = activenode;
     activenode = nextnode;
     nextnode = nextnode->next;
-    head =activenode;
+    head = activenode;
     
-    reversePrint(head);
-    
+    return reverse(head);
+
 }
